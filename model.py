@@ -4,7 +4,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 plt.style.use('fivethirtyeight')
 
-
 games = pd.read_csv('2015-16.csv')
 teams = pd.read_csv('rankings.csv')
 
@@ -64,10 +63,4 @@ data = {
 fit = pys.stan(model_code=stan_code, data=data, iter=2000, chains=2)
 results = fit.extract() 
 
-teams['Rank'] = results['a'][-1]
-teams = teams.set_index('Team')
-teams = teams.sort_values(by='Rank',ascending=False)
-
-teams.plot(kind='bar')
-plt.show()
 
